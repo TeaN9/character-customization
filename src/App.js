@@ -5,7 +5,7 @@ import Eyes from "./components/Eyes";
 import Hair from "./components/Hair";
 import Mouth from "./components/Mouth";
 import Eyebrow from "./components/Eyesbrow";
-import Glasse from "./components/Glasse";
+import Glasses from "./components/Glasse";
 import Earring from "./components/Earring";
 import Neckwear from "./components/Neckwear";
 import Hat from "./components/Hat";
@@ -19,13 +19,27 @@ function App() {
   const [hair, setHair] = useState(null);
   const [mouth, setMouth] = useState(null);
   const [eyebrow, setEyebrow] = useState(null);
-  const [glasse, setGlasse] = useState(null);
-  const [earring, setEarring] = useState(null);
+  const [glasses, setGlasses] = useState(null);
+  const [earrings, setEarrings] = useState(null);
   const [neckwear, setNeckwear] = useState(null);
   const [hat, setHat] = useState(null);
   const [clothing1, setClothing1] = useState(null);
   const [clothing2, setClothing2] = useState(null);
   const [clothing3, setClothing3] = useState(null);
+  const randomize = () => {
+    setBody(Math.floor(Math.random() * total.body));
+    setEyes(Math.floor(Math.random() * total.eyes));
+    setHair(Math.floor(Math.random() * total.hair));
+    setMouth(Math.floor(Math.random() * total.mouth));
+    setEyebrow(Math.floor(Math.random() * total.eyebrows));
+    setGlasses(Math.floor(Math.random() * total.glasses));
+    setEarrings(Math.floor(Math.random() * total.earring));
+    setNeckwear(Math.floor(Math.random() * total.neckwear));
+    setHat(Math.floor(Math.random() * total.hat));
+    setClothing1(Math.floor(Math.random() * total.clothing1));
+    setClothing2(Math.floor(Math.random() * total.clothing2));
+    setClothing3(Math.floor(Math.random() * total.clothing3));
+  };
 
   useEffect(() => randomize, []);
 
@@ -45,10 +59,6 @@ function App() {
     clothing3: 9,
   };
 
-  const randomize = () => {};
-
-  const handleClick = () => {};
-
   return (
     <div className="background">
       <div className="header">
@@ -61,35 +71,59 @@ function App() {
           <div className="avatar-wrapper">
             <div className="avatar"></div>
             <div className="button-random">
-              <button>Randomize</button>
+              <button onClick={() => randomize}>Randomize</button>
             </div>
           </div>
         </div>
 
         <div>
-          <Body total={total} />
-
-          <Eyes total={total} />
-
-          <Hair total={total} />
-
-          <Mouth total={total} />
-
-          <Eyebrow total={total} />
-
-          <Glasse total={total} />
-
-          <Earring total={total} />
-
-          <Neckwear total={total} />
-
-          <Hat total={total} />
-
-          <Clothing1 total={total} />
-
-          <Clothing2 total={total} />
-
-          <Clothing3 total={total} />
+          <Body total={total} path="body" set={setBody} selected={body} />
+          <Eyes total={total} path="eyes" set={setEyes} selected={eyes} />
+          <Hair total={total} path="hair" set={setHair} selected={hair} />
+          <Mouth total={total} path="mouth" set={setMouth} selected={mouth} />
+          <Eyebrow
+            total={total}
+            path="eyebrow"
+            set={setEyebrow}
+            selected={eyebrow}
+          />
+          <Glasses
+            total={total}
+            path="glasses"
+            set={setGlasses}
+            selected={glasses}
+          />
+          <Earring
+            total={total}
+            path="earrings"
+            set={setEarrings}
+            selected={earrings}
+          />
+          <Neckwear
+            total={total}
+            path="neckwear"
+            set={setNeckwear}
+            selected={neckwear}
+          />
+          <Hat total={total} path="hat" set={setHat} selected={hat} />
+          <Clothing1
+            total={total}
+            path="clothing1"
+            set={setClothing1}
+            selected={clothing1}
+          />
+          <Clothing2
+            total={total}
+            path="clothing2"
+            set={setClothing2}
+            selected={clothing2}
+          />
+          <Clothing3
+            total={total}
+            path="clothing3"
+            set={setClothing3}
+            selected={clothing3}
+          />
         </div>
       </div>
     </div>

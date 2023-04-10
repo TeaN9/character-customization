@@ -1,18 +1,21 @@
 import React from "react";
 
-function Eyebrow({ total }) {
-  const Sources = Array(total.eyebrows)
-    .fill()
-    .map((item, index) => `/eyebrows/${index + 1}.png`);
+function Eyebrow({ total, set, selected, path }) {
   return (
     <div className="part-list">
-      <h2>Eyebrow</h2>
+      <h2>{path}</h2>
       <div className="list">
-        {Sources.map((source, index) => (
-          <div className="item">
-            <img key={index} src={source} alt={`item ${index + 1}`} />
-          </div>
-        ))}
+        {Array(total.eyebrows)
+          .fill()
+          .map((item, index) => (
+            <div
+              key={item}
+              className={selected === index ? "selected item" : "item"}
+              onClick={() => set(index)}
+            >
+              <img src={`/${path}/${index + 1}.png`} alt="" />
+            </div>
+          ))}
       </div>
     </div>
   );
