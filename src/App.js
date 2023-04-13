@@ -29,9 +29,9 @@ const totalParts = {
   clothing3: 9,
 };
 
-const totalPartsArray = Object.keys(totalParts)
+const totalPartsArray = Object.keys(totalParts);
 
-console.log(totalPartsArray)
+console.log(totalPartsArray);
 
 function App() {
   // const [body, setBody] = useState(null);
@@ -61,9 +61,6 @@ function App() {
     // setClothing3(Math.floor(Math.random() * total.clothing3));
   };
 
-  
-
-
   return (
     <div className="background">
       <div className="header">
@@ -82,57 +79,28 @@ function App() {
         </div>
 
         <div>
-          {totalPartsArray.map((part, index)=>{
-            return  <SinglePart name={part} index={index} totalParts={totalParts} />
+          {totalPartsArray.map((part, index) => {
+            return (
+              <div key={index} className="part-list">
+                <h2>{part}</h2>
+                <div key={index} className="list">
+                  {Array(Object.values(totalParts))
+                    .fill()
+                    .map((item, i) => (
+                      <div
+                        key={item}
+                        className={
+                          selected === index ? "selected item" : "item"
+                        }
+                        onClick={() => set(i)}
+                      >
+                        <img key={item} src={`/${part}/${i + 1}.png`} alt="" />
+                      </div>
+                    ))}
+                </div>
+              </div>
+            );
           })}
-
-          {/* <Body total={total} path="body" set={setBody} selected={body} />
-          <Eyes total={total} path="eyes" set={setEyes} selected={eyes} />
-          <Hair total={total} path="hair" set={setHair} selected={hair} />
-          <Mouth total={total} path="mouth" set={setMouth} selected={mouth} />
-          <Eyebrow
-            total={total}
-            path="eyebrow"
-            set={setEyebrow}
-            selected={eyebrow}
-          />
-          <Glasses
-            total={total}
-            path="glasses"
-            set={setGlasses}
-            selected={glasses}
-          />
-          <Earring
-            total={total}
-            path="earrings"
-            set={setEarrings}
-            selected={earrings}
-          />
-          <Neckwear
-            total={total}
-            path="neckwear"
-            set={setNeckwear}
-            selected={neckwear}
-          />
-          <Hat total={total} path="hat" set={setHat} selected={hat} />
-          <Clothing1
-            total={total}
-            path="clothing1"
-            set={setClothing1}
-            selected={clothing1}
-          />
-          <Clothing2
-            total={total}
-            path="clothing2"
-            set={setClothing2}
-            selected={clothing2}
-          />
-          <Clothing3
-            total={total}
-            path="clothing3"
-            set={setClothing3}
-            selected={clothing3}
-          /> */}
         </div>
       </div>
     </div>

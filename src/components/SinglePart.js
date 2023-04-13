@@ -1,12 +1,11 @@
 import React from "react";
 
-function SinglePart({ totalParts, name, set, selected, index}) {
-  
+function SinglePart({ total, name, set, selected, index }) {
   return (
     <div key={index} className="part-list">
       <h2>{name}</h2>
       <div key={index} className="list">
-        {Array(totalParts.name)
+        {Array(Object.values(total))
           .fill()
           .map((item, i) => (
             <div
