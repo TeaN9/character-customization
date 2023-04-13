@@ -1,18 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
-// import Body from "./components/Body";
-// import Eyes from "./components/Eyes";
-// import Hair from "./components/Hair";
-// import Mouth from "./components/Mouth";
-// import Eyebrow from "./components/Eyesbrow";
-// import Glasses from "./components/Glasse";
-// import Earring from "./components/Earring";
-// import Neckwear from "./components/Neckwear";
-// import Hat from "./components/Hat";
-// import Clothing1 from "./components/Clothing1";
-// import Clothing2 from "./components/Clothing2";
-// import Clothing3 from "./components/Clothing3";
-import SinglePart from "./components/SinglePart";
 
 const totalParts = {
   body: 17,
@@ -31,34 +18,26 @@ const totalParts = {
 
 const totalPartsArray = Object.keys(totalParts);
 
-console.log(totalPartsArray);
+// console.log(totalPartsArray);
 
 function App() {
-  // const [body, setBody] = useState(null);
-  // const [eyes, setEyes] = useState(null);
-  // const [hair, setHair] = useState(null);
-  // const [mouth, setMouth] = useState(null);
-  // const [eyebrow, setEyebrow] = useState(null);
-  // const [glasses, setGlasses] = useState(null);
-  // const [earrings, setEarrings] = useState(null);
-  // const [neckwear, setNeckwear] = useState(null);
-  // const [hat, setHat] = useState(null);
-  // const [clothing1, setClothing1] = useState(null);
-  // const [clothing2, setClothing2] = useState(null);
-  // const [clothing3, setClothing3] = useState(null);
   const randomize = () => {
     // setBody(Math.floor(Math.random() * total.body));
-    // setEyes(Math.floor(Math.random() * total.eyes));
-    // setHair(Math.floor(Math.random() * total.hair));
-    // setMouth(Math.floor(Math.random() * total.mouth));
-    // setEyebrow(Math.floor(Math.random() * total.eyebrows));
-    // setGlasses(Math.floor(Math.random() * total.glasses));
-    // setEarrings(Math.floor(Math.random() * total.earring));
-    // setNeckwear(Math.floor(Math.random() * total.neckwear));
-    // setHat(Math.floor(Math.random() * total.hat));
-    // setClothing1(Math.floor(Math.random() * total.clothing1));
-    // setClothing2(Math.floor(Math.random() * total.clothing2));
-    // setClothing3(Math.floor(Math.random() * total.clothing3));
+  };
+
+  const renderItemsInside = (part) => {
+    const totalItemsOfPart = totalParts[part];
+    return Array(totalItemsOfPart)
+      .fill()
+      .map((item, i) => (
+        <div
+          key={item}
+          className="item"
+          // onClick={() => set(i)}
+        >
+          <img key={item} src={`/${part}/${i + 1}.png`} alt="" />
+        </div>
+      ));
   };
 
   return (
@@ -84,19 +63,7 @@ function App() {
               <div key={index} className="part-list">
                 <h2>{part}</h2>
                 <div key={index} className="list">
-                  {Array(Object.values(totalParts))
-                    .fill()
-                    .map((item, i) => (
-                      <div
-                        key={item}
-                        className={
-                          selected === index ? "selected item" : "item"
-                        }
-                        onClick={() => set(i)}
-                      >
-                        <img key={item} src={`/${part}/${i + 1}.png`} alt="" />
-                      </div>
-                    ))}
+                  {renderItemsInside(part)}
                 </div>
               </div>
             );

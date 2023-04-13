@@ -5,7 +5,7 @@ function SinglePart({ total, name, set, selected, index }) {
     <div key={index} className="part-list">
       <h2>{name}</h2>
       <div key={index} className="list">
-        {Array(Object.values(total))
+        {Array(total)
           .fill()
           .map((item, i) => (
             <div
