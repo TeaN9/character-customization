@@ -20,13 +20,92 @@
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+  background: #c9d6ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e2e2e2,
+    #c9d6ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e2e2e2,
+    #c9d6ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 h1 {
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: #39678d;
 }
 
 .main {
+  padding-top: 100px;
   display: flex;
   justify-content: space-evenly;
+  gap: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.avatar-wrapper {
+  border: 5px solid #273c75;
+  border-radius: 20px;
+  position: sticky;
+  display: inline-block;
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  top: calc(50% - 150px);
+}
+
+.avatar {
+  position: relative;
+  height: 280px;
+  width: 260px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.avatar img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 260px;
+}
+
+.button-random {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.button-random button {
+  background-color: #e84118;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: large;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+.button-random button:hover {
+  filter: brightness(125%);
 }
 
 .part-list {
@@ -38,17 +117,18 @@ h2 {
   text-align: center;
   margin-top: 40px;
   margin-bottom: 10px;
+  color: #353b48;
 }
 
 .list {
-  border: 5px solid #0097e6;
+  border: 5px solid #273c75;
   border-radius: 20px;
   display: flex;
   flex-wrap: wrap;
 }
 
 .selected {
-  background-color: #9ecbf5;
+  background-color: #b3daff;
 }
 
 .item {

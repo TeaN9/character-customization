@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
+import Avatar from "./components/Avatar";
 
 const totalParts = {
   body: 17,
@@ -16,13 +17,17 @@ const totalParts = {
   clothing3: 9,
 };
 
-const totalPartsArray = Object.keys(totalParts);
-
-// console.log(totalPartsArray);
-
 function App() {
+  const [selectedParts, setSelectedParts] = useState({});
+  const totalPartsArray = Object.keys(totalParts);
+
   const randomize = () => {
-    // setBody(Math.floor(Math.random() * total.body));
+    const randomizedParts = Object.keys(totalParts).reduce((acc, part) => {
+      acc[part] = Math.floor(Math.random() * totalParts[part]);
+      return acc;
+    }, {});
+
+    setSelectedParts(randomizedParts);
   };
 
   const renderItemsInside = (part) => {
@@ -32,13 +37,15 @@ function App() {
       .map((item, i) => (
         <div
           key={item}
-          className="item"
-          // onClick={() => set(i)}
+          className={selectedParts[part] === i ? "selected item" : "item"}
+          onClick={() => setSelectedParts({ ...selectedParts, [part]: i })}
         >
           <img key={item} src={`/${part}/${i + 1}.png`} alt="" />
         </div>
       ));
   };
+
+  useEffect(() => randomize(), []);
 
   return (
     <div className="background">
@@ -50,9 +57,10 @@ function App() {
       <div className="main">
         <div>
           <div className="avatar-wrapper">
-            <div className="avatar"></div>
+            <Avatar totalParts={totalParts} selectedParts={selectedParts} />
+
             <div className="button-random">
-              <button onClick={() => randomize}>Randomize</button>
+              <button onClick={() => randomize()}>Randomize</button>
             </div>
           </div>
         </div>
